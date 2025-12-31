@@ -1,5 +1,4 @@
 {{- $params := .Page.Scratch.Get "params" -}} {{- $render := $params.code.render
 | default dict -}} {{- if $render.goat | default true -}} {{- partial
-"plugin/goat.html" . -}} {{- else -}} {{- dict "Content" .Inner "Lang" .Type
-"Options" .Options "Page" .Page | partial "plugin/code-block.html" -}} {{- end
--}}
+"plugin/goat.html" . -}} {{- else -}} {{- partial
+"_default/_markup/render-codeblock.html" . -}} {{- end -}}
