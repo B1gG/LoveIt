@@ -1,5 +1,8 @@
-{{- if ge hugo.Version "0.142.0" -}}
-    {{- partial "internal/x.html" . -}}
-{{- else -}}
-    {{- template "_internal/shortcodes/twitter.html" . -}}
+{{- /* Hugo v0.141.0+ has built-in x shortcode support - just pass through the
+arguments */ -}} {{- $user := .Get 0 | default (.Get "user") -}} {{- $id := .Get
+1 | default (.Get "id") -}} {{- if and $user $id -}}
+<blockquote class="x-post">
+  <p><a href="https://x.com/{{ $user }}/status/{{ $id }}">View post on X</a></p>
+</blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 {{- end -}}
